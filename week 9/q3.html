@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Two Frames Forms</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+    /* Frame One: left side (menu) */
+    .frame1 {
+      width: 30%;
+      background-color: #f0f0f0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .frame1 a {
+      display: block;
+      margin: 10px 0;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    /* Frame Two: right side (forms + result) */
+    .frame2 {
+      width: 70%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    form {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    input[type="text"], input[type="email"], input[type="number"] {
+      width: 90%;
+      padding: 8px;
+      margin: 5px 0 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    input[type="submit"] {
+      padding: 8px 15px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #007BFF;
+      border-radius: 5px;
+      background-color: #e6f0ff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Frame One -->
+  <div class="frame1">
+    <h2>Menu</h2>
+    <a href="#" onclick="showForm('form1')">Form 1</a>
+    <a href="#" onclick="showForm('form2')">Form 2</a>
+  </div>
+
+  <!-- Frame Two -->
+  <div class="frame2">
+    <!-- Form 1 -->
+    <form id="form1" style="display:none;" onsubmit="return validateForm1()">
+      <h3>Form 1: User Info</h3>
+      Name: <input type="text" id="name1"><br>
+      Email: <input type="email" id="email1"><br>
+      <input type="submit" value="Submit Form 1">
+    </form>
+
+    <!-- Form 2 -->
+    <form id="form2" style="display:none;" onsubmit="return validateForm2()">
+      <h3>Form 2: Feedback</h3>
+      Rating (1-5): <input type="number" id="rating2" min="1" max="5"><br>
+      Comment: <input type="text" id="comment2"><br>
+      <input type="submit" value="Submit Form 2">
+    </form>
+
+    <!-- Result -->
+    <div id="result"></div>
+  </div>
+</div>
+
+<script>
+  // Show selected form
+  function showForm(formId) {
+    document.getElementById('form1').style.display = 'none';
+    document.getElementById('form2').style.display = 'none';
+    document.getElementById(formId).style.display = 'block';
+    document.getElementById('result').innerHTML = '';
+  }
+
+  // Validate Form 1
+  function validateForm1() {
+    const name = document.getElementById('name1').value.trim();
+    const email = document.getElementById('email1').value.trim();
+    if(name === '' || email === '') {
+      alert('Please fill all fields!');
+      return false;
+    }
+    document.getElementById('result').innerHTML = 
+      `<strong>Form 1 Submitted:</strong> Name: ${name}, Email: ${email}`;
+    return false; // prevent page reload
+  }
+
+  // Validate Form 2
+  function validateForm2() {
+    const rating = document.getElementById('rating2').value;
+    const comment = document.getElementById('comment2').value.trim();
+    if(rating === '' || comment === '') {
+      alert('Please fill all fields!');
+      return false;
+    }
+    if(rating < 1 || rating > 5) {
+      alert('Rating must be between 1 and 5!');
+      return false;
+    }
+    document.getElementById('result').innerHTML = 
+      `<strong>Form 2 Submitted:</strong> Rating: ${rating}, Comment: ${comment}`;
+    return false; // prevent page reload
+  }
+</script>
+
+</body>
+</html>

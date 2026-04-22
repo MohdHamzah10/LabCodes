@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Web Page with Two Images</title>
+    <style>
+        .interactive-img {
+            width: 200px;
+            cursor: pointer;
+            margin: 20px;
+            transition: transform 0.3s;
+        }
+
+        select {
+            margin-top: 20px;
+            padding: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Interactive Web Page</h2>
+
+    <img id="img1" class="interactive-img" src="image1.jpg" alt="Hover or Click Me">
+    <br>
+    <img id="img2" class="interactive-img" src="image3.jpg" alt="Hover or Click Me Too">
+
+    <br>
+    <select id="menu">
+        <option value="">Select a page</option>
+        <option value="page1.html">Page 1</option>
+        <option value="page2.html">Page 2</option>
+        <option value="page3.html">Page 3</option>
+    </select>
+
+    <script>
+        const img1 = document.getElementById('img1');
+
+        // Rollover
+        img1.addEventListener('mouseover', () => {
+            img1.src = 'image2.jpg';
+        });
+        img1.addEventListener('mouseout', () => {
+            img1.src = 'image1.jpg';
+        });
+
+        const img2 = document.getElementById('img2');
+
+        img2.addEventListener('click', () => {
+            img2.src = 'image2.jpg'; // clicked image
+            setTimeout(() => {
+                img2.src = 'image3.jpg'; // revert
+            }, 1000);
+        });
+
+        const menu = document.getElementById('menu');
+        menu.addEventListener('change', () => {
+            const url = menu.value;
+            if(url) window.location.href = url;
+        });
+    </script>
+</body>
+</html>

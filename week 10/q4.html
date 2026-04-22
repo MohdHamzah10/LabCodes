@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Calendar</title>
+</head>
+<body>
+
+<h2>Calendar</h2>
+<pre id="calendar"></pre>
+
+<script>
+    const year = prompt("Enter the year:", new Date().getFullYear());
+    const months = ["January","February","March","April","May","June",
+                    "July","August","September","October","November","December"];
+    const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+    let output = "";
+
+    for(let m=0; m<12; m++){
+        output += "\n" + months[m] + "\n";
+        output += days.join(" ") + "\n";
+
+        const firstDay = new Date(year, m, 1).getDay();
+        const daysInMonth = new Date(year, m+1, 0).getDate();
+
+        let line = "";
+        for(let i=0; i<firstDay; i++) line += "    "; // spaces for first day
+
+        for(let d=1; d<=daysInMonth; d++){
+            line += d.toString().padStart(3, " ") + " ";
+            if((firstDay + d) % 7 === 0) line += "\n"; // new week
+        }
+        output += line + "\n";
+    }
+
+    document.getElementById("calendar").innerText = output;
+</script>
+
+</body>
+</html>

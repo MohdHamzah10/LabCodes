@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ABC.COM - Welcome</title>
+
+<script>
+function passName() {
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("username");
+    document.getElementById("hiddenName").value = name;
+}
+</script>
+
+</head>
+
+<body onload="passName()">
+
+<h2>Welcome to ABC.COM</h2>
+
+<p>
+ABC.COM is a platform that provides information, services, and resources
+to help users explore our website and learn more about what we offer.
+</p>
+
+<form action="page3.html">
+    <input type="hidden" id="hiddenName" name="username">
+    <input type="submit" value="Next">
+</form>
+
+</body>
+</html>

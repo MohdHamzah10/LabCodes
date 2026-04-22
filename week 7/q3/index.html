@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Image Hover Example</title>
+
+<script>
+function changeImage() {
+    document.getElementById("myImage").src = "maazzuuuu.jpeg";
+}
+
+function restoreImage() {
+    document.getElementById("myImage").src = "chad.jpeg";
+}
+</script>
+
+</head>
+
+<body>
+
+<h2>Move mouse over the image</h2>
+
+<img id="myImage"
+     src="chad.jpeg"
+     width="300"
+     height="200"
+     onmouseover="changeImage()"
+     onmouseout="restoreImage()">
+
+</body>
+</html>

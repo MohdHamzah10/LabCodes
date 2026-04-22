@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+
+<students>
+    <student>
+        <name>Rahul</name>
+        <age>21</age>
+        <course>Computer Science</course>
+    </student>
+
+    <student>
+        <name>Asha</name>
+        <age>22</age>
+        <course>Information Technology</course>
+    </student>
+
+    <student>
+        <name>Vikram</name>
+        <age>20</age>
+        <course>Electronics</course>
+    </student>
+</students>

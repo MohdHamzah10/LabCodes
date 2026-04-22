@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Calendar Generator</h2>
+
+<select id="month"></select>
+<select id="year"></select>
+<button onclick="generateCalendar()">Show Calendar</button>
+
+<br><br>
+
+<table id="calendar"></table>
+
+<script>
+const monthSelect = document.getElementById("month");
+const yearSelect = document.getElementById("year");
+
+const months = [
+    "January","February","March","April","May","June",
+    "July","August","September","October","November","December"
+];
+
+for (let i = 0; i < 12; i++) {
+    monthSelect.innerHTML += `<option value="${i}">${months[i]}</option>`;
+}
+
+for (let y = 2000; y <= 2035; y++) {
+    yearSelect.innerHTML += `<option value="${y}">${y}</option>`;
+}
+
+function generateCalendar() {
+    let month = parseInt(monthSelect.value);
+    let year = parseInt(yearSelect.value);
+
+    let table = document.getElementById("calendar");
+    table.innerHTML = "";
+
+    let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+    let header = "<tr>";
+    for (let d of days) {
+        header += "<th>" + d + "</th>";
+    }
+    header += "</tr>";
+    table.innerHTML += header;
+
+    let firstDay = new Date(year, month, 1).getDay();
+    let totalDays = new Date(year, month + 1, 0).getDate();
+
+    let date = 1;
+
+    for (let i = 0; i < 6; i++) {
+        let row = "<tr>";
+
+        for (let j = 0; j < 7; j++) {
+            if (i === 0 && j < firstDay) {
+                row += "<td></td>";
+            } else if (date > totalDays) {
+                row += "<td></td>";
+            } else {
+                row += "<td>" + date + "</td>";
+                date++;
+            }
+        }
+
+        row += "</tr>";
+        table.innerHTML += row;
+    }
+}
+</script>
+
+</body>
+</html>

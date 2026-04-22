@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modern Frame Layout</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: grid;
+            grid-template-rows: 1fr 1fr; /* Two equal rows */
+        }
+
+        .top {
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two equal columns */
+        }
+
+        .left {
+            background-color: lightgreen;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .right {
+            background-color: lightcoral;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h2 {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top">
+        <h2>Top Section</h2>
+    </div>
+
+    <div class="bottom">
+        <div class="left">
+            <h2>Left Section</h2>
+        </div>
+        <div class="right">
+            <h2>Right Section</h2>
+        </div>
+    </div>
+
+</body>
+</html>

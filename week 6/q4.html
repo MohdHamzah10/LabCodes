@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Greeting Message</title>
+
+<script>
+function showGreeting() {
+    var choice = confirm("Do you want to see the greeting message?");
+
+    if(choice == true) {
+        document.getElementById("message").innerHTML =
+        "<img src='giphy.gif'><br><br><h2 style='color:darkblue; background-color:lightblue; border:3px; padding:15px; width:60%; margin:auto; text-align:center; box-shadow:3px 3px 10px gray;'>Welcome to Department of Computer Science!</h2>";
+    }
+}
+</script>
+
+</head>
+
+<body onload="showGreeting()" style="text-align:center; font-family:'Times New Roman';">
+
+<div id="message"></div>
+
+</body>
+</html>

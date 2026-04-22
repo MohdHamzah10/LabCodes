@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Date Example</title>
+
+<script>
+
+function findDay() {
+
+    var d = new Date();               
+    var num = prompt("Enter a date between 1 and 31:");
+
+    d.setDate(num);                   
+
+    var day = d.getDay();              
+
+    var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+    alert("Day of the week is: " + days[day]);
+}
+
+</script>
+
+</head>
+
+<body>
+
+<button onclick="findDay()">Enter Date</button>
+
+</body>
+</html>
